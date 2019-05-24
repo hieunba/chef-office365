@@ -1,0 +1,15 @@
+<Configuration>
+  <Add OfficeClientEdition="<%= @edition || 64 %>" Channel="<%= @channel || 'Monthly' %>">
+    <Product ID="<%= @product_id || 'O365BusinessRetail' %>">
+      <Language ID="en-us" />
+    </Product>
+  </Add>
+  <Updates Enabled="FALSE" />
+<% if node['office365']['config']['pin_icons_to_taskbar'] -%>
+  <Property Name="PinIconsToTaskbar" Value="<%= node['office365']['config']['pin_icons_to_taskbar'] || 'FALSE' %>" />
+<% end -%>
+  <RemoveMSI />
+  <Property Name="AUTOACTIVATE" Value="<%= node['office365']['config']['auto_activate'] || 0 %>" />
+  <Display Level="<%= node['office365']['config']['display_level'] || 'None' %>" AcceptEULA="TRUE" />
+  <Logging Level="Standard" Path="" />
+</Configuration>
