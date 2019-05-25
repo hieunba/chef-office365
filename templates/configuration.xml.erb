@@ -1,6 +1,9 @@
 <Configuration>
   <Add OfficeClientEdition="<%= @edition || 64 %>" Channel="<%= @channel || 'Monthly' %>">
     <Product ID="<%= @product_id || 'O365BusinessRetail' %>">
+<% @exclude_apps.each do |exclude| -%>
+      <ExcludeApp ID="<%= exclude.strip %>" />
+<% end -%>
       <Language ID="en-us" />
     </Product>
   </Add>

@@ -24,16 +24,23 @@ configuration_template = Chef::Util::PathHelper.join(download_cache_path, 'Offic
 directory extract_cache_path
 
 deploy_config = {}
+exclude_apps = if node['office365']['config']['exclude_apps'].class == String
+                 node['office365']['config']['exclude_apps'].split(',')
+               else
+                 node['office365']['config']['exclude_apps']
+               end
 deploy_config['edition'] = {
   edition: node['office365']['edition'],
-  channel: node['office365']['channel']
+  channel: node['office365']['channel'],
+  exclude_apps: exclude_apps
 }
 
 template configuration_template do
   source 'configuration.xml.erb'
   variables(
     edition: deploy_config[:edition],
-    channel: deploy_config[:channel]
+    channel: deploy_config[:channel],
+    exclude_apps: exclude_apps
   )
 end
 
