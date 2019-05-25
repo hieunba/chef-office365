@@ -6,6 +6,4 @@ This file is used to list changes made in each version of the office365 cookbook
 
 Initial release.
 
-- change 0
-- change 1
-
+- Install Microsoft Office 365 Business en-us with Office Deployment tool
