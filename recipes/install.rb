@@ -29,9 +29,10 @@ exclude_apps = if node['office365']['config']['exclude_apps'].class == String
                else
                  node['office365']['config']['exclude_apps']
                end
-deploy_config['edition'] = {
-  edition: node['office365']['edition'],
-  channel: node['office365']['channel'],
+deploy_config = {
+  edition: node['office365']['config']['edition'],
+  channel: node['office365']['config']['channel'],
+  product_id: node['office365']['config']['product_id'],
   exclude_apps: exclude_apps
 }
 
@@ -40,6 +41,7 @@ template configuration_template do
   variables(
     edition: deploy_config[:edition],
     channel: deploy_config[:channel],
+    product_id: deploy_config[:product_id],
     exclude_apps: exclude_apps
   )
 end
