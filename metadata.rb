@@ -4,7 +4,7 @@ maintainer_email 'hi3unb@gmail.com'
 license 'Apache-2.0'
 description 'Installs/Configures office365'
 long_description 'Installs/Configures office365'
-version '0.1.1'
+version '0.1.2'
 chef_version '>= 13.5.3'
 
 supports 'windows'
