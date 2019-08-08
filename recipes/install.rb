@@ -68,8 +68,9 @@ language = node['office365']['language'] || 'en-us'
 package_name = 'Microsoft Office 365 '
 
 package_name += case node['office365']['config']['product_id']
-                when 'O365BusinessRetail' then "Business - #{language}"
                 when 'O365ProPlusRetail' then "ProPlus - #{language}"
+		else
+		  "Business - #{language}"
                 end
 
 deploy_options = "/configure #{configuration_template}"
